@@ -50,6 +50,7 @@ class imgstegno:
         back_button.grid()
         back_button.config(font=('courier',16))
 
+    #(GUI function)function for selecting image and take text input
     def e_path(self,ef):       
         ep= Frame(root)
         myfile = tkinter.filedialog.askopenfilename(filetypes = ([('Image Files', '*.png *.jpg')]))
@@ -69,9 +70,9 @@ class imgstegno:
         l2.grid(pady=15)
         text_area = Text(ep, width=50, height=10)
         text_area.grid()
-        encode_button = Button(ep, text='Encode', command=lambda :self.enc_fun(text_area,myimg))
+        encode_button = Button(ep, text='cancel', command=lambda : self.home(ep))
         encode_button.config(font=('courier',16))
-        back_button = Button(ep, text='<--', command=lambda : self.home(ep))
+        back_button = Button(ep, text='Encode', command=lambda :self.enc_fun(text_area,myimg))
         back_button.config(font=('courier',16))
         back_button.grid(pady=15)
         encode_button.grid()
@@ -102,6 +103,8 @@ class imgstegno:
         f.grid(row =1)
         b_encode.grid()
         b_decode.grid()
+    
+    #loop for main frame
     def home(self,frame):
         frame.destroy()
         self.main(root)

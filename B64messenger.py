@@ -26,25 +26,25 @@ class imgstegno:
     #(GUI function)function for creating page after pressing decode button
     def decode_page(self,f):
         f.destroy()
-        d_f2 = Frame(root)
-        l1 = Label(d_f2, text='Give the path of Encoded image your image:')
-        l1.grid(row=1)
-        bws_button = Button(d_f2, text='path', command=lambda :self.d_path(d_f2))
+        df = Frame(root)
+        l1 = Label(df, text='Give the path of Encoded image your image:')
+        l1.grid(pady=30)
+        bws_button = Button(df, text='path', command=lambda :self.d_path(df))
         bws_button.grid()
-        d_f2.grid(row=1)
-        back_button = Button(d_f2, text='home', command= lambda :self.page3(d_f2))
+        df.grid(row=1)
+        back_button = Button(df, text='home', command= lambda :self.home(df))
         back_button.grid()
     
     #(GUI function)function for creating page after pressing encode button
     def encode_page(self,f):
         f.destroy()
-        f2 = Frame(root)
-        l1= Label(f2,text='Give the path of your image:')
-        l1.grid()
-        bws_button = Button(f2,text='path',command=lambda : self.e_path(f2))
+        ef = Frame(root)
+        l1= Label(ef,text='Give the path of your image:')
+        l1.grid(pady=30)
+        bws_button = Button(ef,text='path',command=lambda : self.e_path(ef))
         bws_button.grid()
-        f2.grid(row=1)
-        back_button = Button(f2, text='home', command= lambda :self.page3(f2))
+        ef.grid(row=1)
+        back_button = Button(ef, text='home', command= lambda :self.home(ef))
         back_button.grid()
     #(GUI function)front page
     def main(self,root):
@@ -68,7 +68,7 @@ class imgstegno:
         f.grid(row =1)
         b_encode.grid()
         b_decode.grid()
-    def page3(self,frame):
+    def home(self,frame):
         frame.destroy()
         self.main(root)
 root=Tk()

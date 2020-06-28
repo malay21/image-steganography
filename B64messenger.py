@@ -42,7 +42,8 @@ class imgstegno:
         bws_button = Button(f2,text='path',command=lambda : self.e_path(f2))
         bws_button.grid()
         f2.grid(row=1)
-    
+        back_button = Button(f2, text='home', command= lambda :self.page3(f))
+        back_button.grid()
     #(GUI function)front page
     def main(self,root):
         o_image_size=0
@@ -65,6 +66,9 @@ class imgstegno:
         f.grid(row =1)
         b_encode.grid()
         b_decode.grid()
+    def page3(self,frame):
+        frame.destroy()
+        self.main(root)
 root=Tk()
 x=imgstegno()
 x.main(root)

@@ -24,22 +24,22 @@ class imgstegno:
         #print("encrypted message : ", base64_msg)
     
     #(GUI function)function for creating page after pressing decode button
-    def d_page1(self,f):
+    def decode_page(self,f):
         f.destroy()
         d_f2 = Frame(root)
         l1 = Label(d_f2, text='Give the path of Encoded image your image:')
         l1.grid(row=1)
-        bws_button = Button(d_f2, text='path', command=lambda :self.d_give_path(d_f2))
+        bws_button = Button(d_f2, text='path', command=lambda :self.d_path(d_f2))
         bws_button.grid()
         d_f2.grid(row=1)
     
     #(GUI function)function for creating page after pressing encode button
-    def page2(self,f):
+    def encode_page(self,f):
         f.destroy()
         f2 = Frame(root)
         l1= Label(f2,text='Give the path of your image:')
         l1.grid()
-        bws_button = Button(f2,text='path',command=lambda : self.give_path(f2))
+        bws_button = Button(f2,text='path',command=lambda : self.e_path(f2))
         bws_button.grid()
         f2.grid(row=1)
     
@@ -55,9 +55,9 @@ class imgstegno:
         title.config(font=('courier',20))
         title.grid(pady=30)
 
-        b_encode = Button(f,text='encode',command= lambda :self.page2(f))
+        b_encode = Button(f,text='encode',command= lambda :self.encode_page(f))
         b_encode.config(font=('courier',18))
-        b_decode = Button(f,text='decode', command=lambda :self.d_page1(f))
+        b_decode = Button(f,text='decode', command=lambda :self.decode_page(f))
         b_decode.config(font=('courier',18))
 
         root.grid_rowconfigure(1, weight=1)

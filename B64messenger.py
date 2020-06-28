@@ -32,6 +32,8 @@ class imgstegno:
         bws_button = Button(d_f2, text='path', command=lambda :self.d_path(d_f2))
         bws_button.grid()
         d_f2.grid(row=1)
+        back_button = Button(d_f2, text='home', command= lambda :self.page3(d_f2))
+        back_button.grid()
     
     #(GUI function)function for creating page after pressing encode button
     def encode_page(self,f):
@@ -42,7 +44,7 @@ class imgstegno:
         bws_button = Button(f2,text='path',command=lambda : self.e_path(f2))
         bws_button.grid()
         f2.grid(row=1)
-        back_button = Button(f2, text='home', command= lambda :self.page3(f))
+        back_button = Button(f2, text='home', command= lambda :self.page3(f2))
         back_button.grid()
     #(GUI function)front page
     def main(self,root):

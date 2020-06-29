@@ -53,7 +53,9 @@ class imgstegno:
     #(GUI function)function for selecting image and take text input
     def e_path(self,ef):       
         ep= Frame(root)
-        myfile = tkinter.filedialog.askopenfilename(filetypes = ([('Image Files', '*.png *.jpg')]))
+        myfile = tkinter.filedialog.askopenfilename(filetypes = ([('Image Files', '*.png *.jpg *.jpeg')]))
+        if not myfile:
+            messagebox.showinfo("error","you have selected nothing !")
         myimg = Image.open(myfile)
         myimage = myimg.resize((250,150))
         ef.destroy()

@@ -27,19 +27,22 @@ class imgstegno:
     def decode_page(self,f):
         f.destroy()
         df = Frame(root)
-        l1 = Label(df, text='Give the path of Encoded image your image:')
-        l1.grid(pady=30)
-        bws_button = Button(df, text='path', command=lambda :self.d_path(df))
-        bws_button.grid()
+        l1 = Label(df, text='Select file to decode :')
+        l1.config(font=('courier',18))
+        l1.grid(pady=15)
+        bws_button = Button(df, text='select', command=lambda :self.d_path(df))
+        bws_button.config(font=('courier',16))
+        bws_button.grid(pady=15)
         df.grid(row=1)
         back_button = Button(df, text='cancel', command= lambda :self.home(df))
+        back_button.config(font=('courier',16))
         back_button.grid()
     
     #(GUI function)function for creating page after pressing encode button
     def encode_page(self,f):
         f.destroy()
         ef = Frame(root)
-        l1= Label(ef,text='Select your image:')
+        l1= Label(ef,text='Select your image :')
         l1.config(font=('courier',18))
         l1.grid(pady=15)
         bws_button = Button(ef,text='select',command=lambda : self.e_path(ef))

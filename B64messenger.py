@@ -10,17 +10,17 @@ import  os
 
 class imgstegno:
     #function to decrypt the message using base64
-    def decrypt(base64_msg):
+    def decrypt(self,base64_msg):
         base64_bytes=base64_msg.encode('ascii')
         message_bytes=base64.b64decode(base64_bytes)
         message=message_bytes.decode('ascii')
         #print("decrypted message : ", message)
 
     #fuction to encrypt the message using base64
-    def encrypt(message):
+    def encrypt(self,message):
         message_bytes=message.encode('ascii')
         base64_bytes=base64.b64encode(message_bytes)
-        base64_msg=base64_bytes.decode('ascii')
+        data=base64_bytes.decode('ascii')
         #print("encrypted message : ", base64_msg)
     
     #(GUI function)function for creating page after pressing decode button
@@ -56,43 +56,53 @@ class imgstegno:
     #(GUI function)function for selecting image and take text input
     def e_path(self,ef):       
         ep= Frame(root)
-        myfile = tkinter.filedialog.askopenfilename(filetypes = ([('Image Files', '*.png *.jpg *.jpeg')]))
+        myfile = tkinter.filedialog.askopenfilename(filetypes = ([('png', '*.png'),('jpg', '*.jpg'),('All Files', '*.*')]))
         if not myfile:
-            messagebox.showinfo("error","you have selected nothing !")
-        myimg = Image.open(myfile)
-        myimage = myimg.resize((250,150))
-        ef.destroy()
-        img = ImageTk.PhotoImage(myimage)
-        l3= Label(ep,text='selected image')
-        l3.grid()
-        panel = Label(ep, image=img)
-        panel.image = img
-        self.o_image_size = os.stat(myfile)
-        self.o_image_w, self.o_image_h = myimg.size
-        panel.grid()
-        l2 = Label(ep, text='Enter the message')
-        l2.config(font=('courier',18))
-        l2.grid(pady=15)
-        text_area = Text(ep, width=50, height=10)
-        text_area.grid()
-        encode_button = Button(ep, text='cancel', command=lambda : self.home(ep))
-        encode_button.config(font=('courier',16))
-        back_button = Button(ep, text='Encode', command=lambda :self.enc_fun(text_area,myimg))
-        back_button.config(font=('courier',16))
-        back_button.grid(pady=15)
-        encode_button.grid()
-        ep.grid(row=1)
+            messagebox.showerror("error","you have selected nothing !")
+        else:
+            myimg = Image.open(myfile)
+            myimage = myimg.resize((250,150))
+            ef.destroy()
+            img = ImageTk.PhotoImage(myimage)
+            l3= Label(ep,text='selected image')
+            l3.grid()
+            panel = Label(ep, image=img)
+            panel.image = img
+            self.o_image_size = os.stat(myfile)
+            self.o_image_w, self.o_image_h = myimg.size
+            panel.grid()
+            l2 = Label(ep, text='Enter the message')
+            l2.config(font=('courier',18))
+            l2.grid(pady=15)
+            text_area = Text(ep, width=50, height=10)
+            text_area.grid()
+            encode_button = Button(ep, text='cancel', command=lambda : self.home(ep))
+            encode_button.config(font=('courier',16))
+            back_button = Button(ep, text='Encode', command=lambda :self.e_fun(text_area,myimg))
+            back_button.config(font=('courier',16))
+            back_button.grid(pady=15)
+            encode_button.grid()
+            ep.grid(row=1)
 
+    def e_fun(self,text_area,myimg):
+        message = text_area.get("1.0", "end-1c")
+        message_bytes=message.encode('ascii')
+        base64_bytes=base64.b64encode(message_bytes)
+        data=base64_bytes.decode('ascii')
+        if not data:
+            messagebox.showinfo("error","no text found! ")
+        else:
+            messagebox.showinfo("encrypted text",data)
 
-
+            
     #(GUI function)front page
     def main(self,root):
         o_image_size=0
         root.title('Bmessenger')
         root.geometry('400x600')
         root.resizable(width =False, height=False)
+        #root.minsize(width =400, height=500)  #if you want to make it resizable
         f = Frame(root)
-        
         title = Label(f,text='Bmessenger')
         title.config(font=('courier',18))
         title.grid(pady=20)

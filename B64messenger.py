@@ -83,7 +83,7 @@ class imgstegno:
             back_button.grid(pady=15)
             encode_button.grid()
             ep.grid(row=1)
-
+    #encode function for 
     def e_fun(self,text_area,myimg):
         message = text_area.get("1.0", "end-1c")
         message_bytes=message.encode('ascii')
@@ -151,7 +151,7 @@ class imgstegno:
         for i in data:
             newd.append(format(ord(i), '08b'))
         return newd
-                
+
     def encode_enc(self,newimg, data):
         w = newimg.size[0]
         (x, y) = (0, 0)

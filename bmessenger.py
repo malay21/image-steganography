@@ -201,15 +201,43 @@ class func:
             panel = Label(k, image=img)
             panel.image = img
             panel.grid()
-            #hidden_data = self.decode(myimg)
+            hidden_data = func.decode(self,myimg)
+            base64_bytes=hidden_data.encode('ascii')
+            message_bytes=base64.b64decode(base64_bytes)
+            message=message_bytes.decode('ascii')
             l2 = Label(k, text='Hidden data is :')
-            l2.grid(pady=10)
-            text_area = Text(k,state='disabled',width=50, height=10)
-            #text_area.insert(INSERT, hidden_data)
+            l2.config(font=('courier',18))
+            l2.grid(pady=15)
+            text_area = Text(k,width=50, height=10)
+            text_area.insert(INSERT, message)
+            text_area.configure(state='disabled')
             text_area.grid()
             back_button = Button(k, text='home', command= lambda :frames.home(self,k))
+            back_button.config(font=('courier',16))
             back_button.grid()
             k.grid(row=1)
+
+    
+    def decode(self, image):
+        data = ''
+        imgdata = iter(image.getdata())
+
+        while (True):
+            pixels = [value for value in imgdata.__next__()[:3] +
+                      imgdata.__next__()[:3] +
+                      imgdata.__next__()[:3]]
+            # string of binary data
+            binstr = ''
+
+            for i in pixels[:8]:
+                if i % 2 == 0:
+                    binstr += '0'
+                else:
+                    binstr += '1'
+
+            data += chr(int(binstr, 2))
+            if pixels[-1] % 2 != 0:
+                return data
 root=Tk()
 x=frames()
 x.main(root)

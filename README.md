@@ -1,8 +1,11 @@
 
 BMESSENGER
 > This is a python based image steganography which provides double protection.
-> this applicationconverts text into base64 and merge it with image.
+
+> this application converts text into base64 and merge it with image.
+
 ---
+
 ## Requirement
  - python 3.8
  - pillow (python image library)

@@ -48,6 +48,37 @@ class frames:
         back_button.grid()
         back_button.config(font=('courier',16))
 
+    #frame to select path of image user want to manipulate
+    def e_path(self,ef):       
+        ep= Frame(root)
+        myfile = tkinter.filedialog.askopenfilename(filetypes = ([('png', '*.png'),('jpg', '*.jpg'),('All Files', '*.*')]))
+        if not myfile:
+            messagebox.showerror("error","you have selected nothing !")
+        else:
+            myimg = Image.open(myfile)
+            myimage = myimg.resize((250,150))
+            ef.destroy()
+            img = ImageTk.PhotoImage(myimage)
+            l3= Label(ep,text='selected image')
+            l3.grid()
+            panel = Label(ep, image=img)
+            panel.image = img
+            self.o_image_size = os.stat(myfile)
+            self.o_image_w, self.o_image_h = myimg.size
+            panel.grid()
+            l2 = Label(ep, text='Enter the message')
+            l2.config(font=('courier',18))
+            l2.grid(pady=15)
+            text_area = Text(ep, width=50, height=10)
+            text_area.grid()
+            encode_button = Button(ep, text='cancel', command=lambda : self.home(ep))
+            encode_button.config(font=('courier',16))
+            back_button = Button(ep, text='Encode', command=lambda :self.e_fun(text_area,myimg))
+            back_button.config(font=('courier',16))
+            back_button.grid(pady=15)
+            encode_button.grid()
+            ep.grid(row=1)
+            
     #frame for decode page
     def decode_page(self,f):
         f.destroy()

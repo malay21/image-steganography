@@ -32,7 +32,8 @@ class frames:
         f.grid(row =1)
         b_encode.grid()
         b_decode.grid()
-    #encode 1st page 
+    
+    #frame for encode page 
     def encode_page(self,f):
         f.destroy()
         ef = Frame(root)
@@ -47,7 +48,20 @@ class frames:
         back_button.grid()
         back_button.config(font=('courier',16))
 
-
+    #frame for decode page
+    def decode_page(self,f):
+        f.destroy()
+        df = Frame(root)
+        l1 = Label(df, text='Select file to decode :')
+        l1.config(font=('courier',18))
+        l1.grid(pady=15)
+        bws_button = Button(df, text='select', command=lambda :self.d_path(df))
+        bws_button.config(font=('courier',16))
+        bws_button.grid(pady=15)
+        df.grid(row=1)
+        back_button = Button(df, text='cancel', command= lambda :self.home(df))
+        back_button.config(font=('courier',16))
+        back_button.grid()
    
 root=Tk()
 x=frames()

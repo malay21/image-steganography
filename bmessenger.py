@@ -120,7 +120,7 @@ class func:
                 self.d_image_size = my_file.tell()
                 self.d_image_w,self.d_image_h = newimg.size
                 messagebox.showinfo("Success","Encoding Successful")
-
+    #function to modify the pixels of image
     def encode_enc(self,newimg,data):
         w = newimg.size[0]
         (x, y) = (0, 0)
@@ -134,7 +134,7 @@ class func:
                 y += 1
             else:
                 x += 1
-    
+    #function to modify the pixels of image
     def modPix(self,pix,data):
 
         datalist = func.genData(self,data)
@@ -174,7 +174,7 @@ class func:
             yield pix[0:3]
             yield pix[3:6]
             yield pix[6:9]
-    
+    #function to modify the pixels of image
     def genData(self,data):
 
         # list of binary codes
@@ -184,6 +184,32 @@ class func:
         for i in data:
             newd.append(format(ord(i), '08b'))
         return newd
+
+    def d_path(self, df):
+        
+        myfile = tkinter.filedialog.askopenfilename(filetypes = ([('png', '*.png')]))
+        if not myfile:
+            messagebox.showerror("error","you have selected nothing !")
+        else:            
+            df.destroy()
+            k= Frame(root)
+            l3= Label(k,text='selected image')
+            l3.grid()
+            myimg = Image.open(myfile, 'r')
+            myimage = myimg.resize((250, 150))
+            img = ImageTk.PhotoImage(myimage)
+            panel = Label(k, image=img)
+            panel.image = img
+            panel.grid()
+            #hidden_data = self.decode(myimg)
+            l2 = Label(k, text='Hidden data is :')
+            l2.grid(pady=10)
+            text_area = Text(k,state='disabled',width=50, height=10)
+            #text_area.insert(INSERT, hidden_data)
+            text_area.grid()
+            back_button = Button(k, text='home', command= lambda :frames.home(self,k))
+            back_button.grid()
+            k.grid(row=1)
 root=Tk()
 x=frames()
 x.main(root)

@@ -3,7 +3,7 @@ BMESSENGER
 
 > "Bmessenger" is a cross-platform application, it can be used on windows or linux with proper setup.
 
-> This is a python based image steganography application which provides double protection to transfer secret message.
+> This is a python based image steganography application which provides double protection to create secret message.
 
 ---
 

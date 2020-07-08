@@ -1,4 +1,4 @@
-![Bmessenger]()
+![Bmessenger](/logo/logo.png)
 BMESSENGER
 
 > "Bmessenger" is a cross-platform application, it can be used on windows or linux with proper setup.

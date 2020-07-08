@@ -55,7 +55,7 @@ class frames:
         l1 = Label(df, text='Select file to decode :')
         l1.config(font=('courier',18))
         l1.grid(pady=15)
-        bws_button = Button(df, text='select', command=lambda :self.d_path(df))
+        bws_button = Button(df, text='select', command=lambda :func.d_path(self,df))
         bws_button.config(font=('courier',16))
         bws_button.grid(pady=15)
         df.grid(row=1)
@@ -93,11 +93,29 @@ class func:
             text_area.grid()
             encode_button = Button(ep, text='cancel', command=lambda : frames.home(self,ep))
             encode_button.config(font=('courier',16))
-            back_button = Button(ep, text='Encode', command=lambda :self.e_fun(text_area,myimg))
+            back_button = Button(ep, text='Encode', command=lambda : func.e_fun(self,text_area,myimg))
             back_button.config(font=('courier',16))
             back_button.grid(pady=15)
             encode_button.grid()
             ep.grid(row=1)
+    #function to convert text into base64 & merge with image        
+    def e_fun(self,text_area,myimg):
+        message = text_area.get("1.0", "end-1c")
+        message_bytes=message.encode('ascii')
+        base64_bytes=base64.b64encode(message_bytes)
+        data=base64_bytes.decode('ascii')
+        if not data:
+            messagebox.showinfo("error","no text found! ")
+        else:
+            newimg = myimg.copy()
+            self.encode_enc(newimg, data)
+            my_file = BytesIO()
+            newimg.save(tkinter.filedialog.asksaveasfilename(filetypes = (('png', '*.png')),defaultextension=".png"))
+            newimg.save(my_file,'png')
+            self.d_image_size = my_file.tell()
+            self.d_image_w,self.d_image_h = newimg.size
+            messagebox.showinfo("Success","Encoding Successful")
+
 root=Tk()
 x=frames()
 x.main(root)

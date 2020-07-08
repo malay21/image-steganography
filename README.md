@@ -14,7 +14,7 @@ BMESSENGER
     ```shell
    $ pip install pillow
     ```
- - tkinter
+ - tkinter (python GUI library)
     - can be installd via <br/>
    ```shell
    $ pip install tk

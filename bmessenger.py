@@ -64,6 +64,7 @@ class frames:
         back_button = Button(df, text='cancel', command= lambda :self.home(df))
         back_button.config(font=('courier',16))
         back_button.grid()
+
     #home function to loop back to main screen    
     def home(self,frame):
         frame.destroy()
@@ -100,6 +101,7 @@ class func:
             back_button.grid(pady=15)
             encode_button.grid()
             ep.grid(row=1)
+    
     #function to convert text into base64 & merge with image        
     def e_fun(self,text_area,myimg):
         message = text_area.get("1.0", "end-1c")
@@ -122,7 +124,8 @@ class func:
                 self.d_image_size = my_file.tell()
                 self.d_image_w,self.d_image_h = newimg.size
                 messagebox.showinfo("Success","Encoding Successful")
-    #function to modify the pixels of image
+    
+    #function to enter the data pixels in image
     def encode_enc(self,newimg,data):
         w = newimg.size[0]
         (x, y) = (0, 0)
@@ -136,6 +139,7 @@ class func:
                 y += 1
             else:
                 x += 1
+    
     #function to modify the pixels of image
     def modPix(self,pix,data):
 
@@ -176,7 +180,8 @@ class func:
             yield pix[0:3]
             yield pix[3:6]
             yield pix[6:9]
-    #function to modify the pixels of image
+   
+    #function to generate data
     def genData(self,data):
 
         # list of binary codes
@@ -187,6 +192,7 @@ class func:
             newd.append(format(ord(i), '08b'))
         return newd
 
+    #function to select path of image for "decode"
     def d_path(self, df):
         
         myfile = tkinter.filedialog.askopenfilename(filetypes = ([('png', '*.png')]))
@@ -219,7 +225,7 @@ class func:
             back_button.grid()
             k.grid(row=1)
 
-    
+    #function to decode data
     def decode(self, image):
         data = ''
         imgdata = iter(image.getdata())

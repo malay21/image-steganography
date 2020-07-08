@@ -62,7 +62,10 @@ class frames:
         back_button = Button(df, text='cancel', command= lambda :self.home(df))
         back_button.config(font=('courier',16))
         back_button.grid()
-
+    #home function to loop back to main screen    
+    def home(self,frame):
+        frame.destroy()
+        self.main(root)
 
 class func:
     #function to select path of image for "encode"
@@ -88,7 +91,7 @@ class func:
             l2.grid(pady=15)
             text_area = Text(ep, width=50, height=10)
             text_area.grid()
-            encode_button = Button(ep, text='cancel', command=lambda : self.home(ep))
+            encode_button = Button(ep, text='cancel', command=lambda : frames.home(self,ep))
             encode_button.config(font=('courier',16))
             back_button = Button(ep, text='Encode', command=lambda :self.e_fun(text_area,myimg))
             back_button.config(font=('courier',16))

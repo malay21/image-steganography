@@ -9,6 +9,7 @@ from io import BytesIO
 import  os
 
 class frames:
+    #main frame or start page
     def main(self,root):
         o_image_size=0
         root.title('Bmessenger')
@@ -31,7 +32,20 @@ class frames:
         f.grid(row =1)
         b_encode.grid()
         b_decode.grid()
-
+    #encode 1st page 
+    def encode_page(self,f):
+        f.destroy()
+        ef = Frame(root)
+        l1= Label(ef,text='Select your image :')
+        l1.config(font=('courier',18))
+        l1.grid(pady=15)
+        bws_button = Button(ef,text='select',command=lambda : func.e_path(self,ef))
+        bws_button.config(font=('courier',16))
+        bws_button.grid(pady=15)
+        ef.grid(row=1)
+        back_button = Button(ef, text='cancel', command=lambda :self.home(ef))
+        back_button.grid()
+        back_button.config(font=('courier',16))
 
 
    

@@ -13,6 +13,8 @@ class frames:
     def main(self,root):
         o_image_size=0
         root.title('Bmessenger')
+        photo = PhotoImage(file ="logo/logo.png")
+        root.iconphoto(False, photo)
         root.geometry('400x600')
         root.resizable(width =False, height=False)
         #root.minsize(width =400, height=500)  #if you want to make it resizable
@@ -211,7 +213,7 @@ class func:
             text_area = Text(k,width=50, height=10)
             text_area.insert(INSERT, message)
             text_area.configure(state='disabled')
-            text_area.grid()
+            text_area.grid(pady=15)
             back_button = Button(k, text='home', command= lambda :frames.home(self,k))
             back_button.config(font=('courier',16))
             back_button.grid()

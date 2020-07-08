@@ -1,11 +1,9 @@
-
+![Bmessenger]()
 BMESSENGER
 
-> "Bmessenger" is a cross-platform application, it can be used on windows or linux.
+> "Bmessenger" is a cross-platform application, it can be used on windows or linux with proper setup.
 
-> This is a python based image steganography which provides double protection.
-
-> this application converts text into base64 and merge it with image.
+> This is a python based image steganography application which provides double protection to transfer secret message.
 
 ---
 
@@ -14,11 +12,11 @@ BMESSENGER
  - pillow (python image library)
     - can be installed via <br/>
     ```shell
-    $ pip install pillow
+   $ pip install pillow
     ```
  - tkinter
     - can be installd via <br/>
    ```shell
-    $ pip install tk
+   $ pip install tk
     ```
 ---

@@ -48,7 +48,24 @@ class frames:
         back_button.grid()
         back_button.config(font=('courier',16))
 
-    #frame to select path of image user want to manipulate
+    #frame for decode page
+    def decode_page(self,f):
+        f.destroy()
+        df = Frame(root)
+        l1 = Label(df, text='Select file to decode :')
+        l1.config(font=('courier',18))
+        l1.grid(pady=15)
+        bws_button = Button(df, text='select', command=lambda :self.d_path(df))
+        bws_button.config(font=('courier',16))
+        bws_button.grid(pady=15)
+        df.grid(row=1)
+        back_button = Button(df, text='cancel', command= lambda :self.home(df))
+        back_button.config(font=('courier',16))
+        back_button.grid()
+
+
+class func:
+    #function to select path of image for "encode"
     def e_path(self,ef):       
         ep= Frame(root)
         myfile = tkinter.filedialog.askopenfilename(filetypes = ([('png', '*.png'),('jpg', '*.jpg'),('All Files', '*.*')]))
@@ -78,22 +95,6 @@ class frames:
             back_button.grid(pady=15)
             encode_button.grid()
             ep.grid(row=1)
-            
-    #frame for decode page
-    def decode_page(self,f):
-        f.destroy()
-        df = Frame(root)
-        l1 = Label(df, text='Select file to decode :')
-        l1.config(font=('courier',18))
-        l1.grid(pady=15)
-        bws_button = Button(df, text='select', command=lambda :self.d_path(df))
-        bws_button.config(font=('courier',16))
-        bws_button.grid(pady=15)
-        df.grid(row=1)
-        back_button = Button(df, text='cancel', command= lambda :self.home(df))
-        back_button.config(font=('courier',16))
-        back_button.grid()
-   
 root=Tk()
 x=frames()
 x.main(root)

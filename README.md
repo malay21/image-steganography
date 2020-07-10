@@ -20,3 +20,9 @@ BMESSENGER
    $ pip install tk
     ```
 ---
+
+## Refrences
+ - https://www.geeksforgeeks.org/image-based-steganography-using-python/
+ - https://docs.python.org/3/library/tkinter.html
+ - https://pillow.readthedocs.io/en/stable/
+ - https://docs.python.org/3/library/base64.html

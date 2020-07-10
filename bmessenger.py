@@ -113,9 +113,9 @@ class func:
             messagebox.showinfo("error","no text found! ")
         else:
             newimg = myimg.copy()
-            temp=os.path.splitext(os.path.basename(myimg.filename))[0]
             func.encode_enc(self,newimg, data)
             my_file = BytesIO()
+            temp=os.path.splitext(os.path.basename(myimg.filename))[0]
             newimg.save(tkinter.filedialog.asksaveasfilename(initialfile=temp,filetypes = ([('png', '*.png')]),defaultextension=".png"))
             #newimg.save('output.png')              #test
             if not newimg:

@@ -27,12 +27,15 @@ BMESSENGER
    - you massage taken from text box converted to base64. 
    - merge this base64 encoded string with image.
    - user is given option to save image wherever he/she wants.
+
 <br/>
+
  - decode:
    - select image which is encoded.
    - the base64 string is seprated using decode function.
    - base64 string is decoded.
    - by tkinter the output is shown in a textbox.
+
 ---
 
 ## Guide

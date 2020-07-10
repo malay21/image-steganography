@@ -97,20 +97,20 @@ class func:
             text_area.grid()
             encode_button = Button(ep, text='cancel', command=lambda : frames.home(self,ep))
             encode_button.config(font=('courier',16))
-            back_button = Button(ep, text='Encode', command=lambda : [func.e_fun(self,text_area,myimg),frames.home(self,ep)])
+            back_button = Button(ep, text='Encode', command=lambda : func.e_fun(self,text_area,myimg,ep))
             back_button.config(font=('courier',16))
             back_button.grid(pady=15)
             encode_button.grid()
             ep.grid(row=1)
     
     #function to convert text into base64 & merge with image        
-    def e_fun(self,text_area,myimg):
+    def e_fun(self,text_area,myimg,frame):
         message = text_area.get("1.0", "end-1c")
         message_bytes=message.encode('ascii')
         base64_bytes=base64.b64encode(message_bytes)
         data=base64_bytes.decode('ascii')
         if not data:
-            messagebox.showinfo("error","no text found! ")
+            messagebox.showinfo("error","please enter some text ")
         else:
             newimg = myimg.copy()
             func.encode_enc(self,newimg, data)
@@ -125,6 +125,7 @@ class func:
                 self.d_image_size = my_file.tell()
                 self.d_image_w,self.d_image_h = newimg.size
                 messagebox.showinfo("Success","Encoding Successful")
+                frames.home(self,ep)
     
     #function to enter the data pixels in image
     def encode_enc(self,newimg,data):

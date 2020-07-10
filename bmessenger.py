@@ -74,7 +74,8 @@ class func:
     #function to select path of image for "encode"
     def e_path(self,ef):       
         ep= Frame(root)
-        myfile = tkinter.filedialog.askopenfilename(filetypes = ([('png', '*.png'),('jpg', '*.jpg'),('All Files', '*.*')]))
+        myfile = tkinter.filedialog.askopenfilename(filetypes = ([('png', '*.png'),('jpeg', '*.jpeg'),('jpg', '*.jpg'),('All Files', '*.*')]))
+        #myfile = tkinter.filedialog.askopenfilename()
         if not myfile:
             messagebox.showerror("error","you have selected nothing !")
         else:
@@ -112,7 +113,7 @@ class func:
             messagebox.showinfo("error","no text found! ")
         else:
             newimg = myimg.copy()
-            temp =os.path.basename(myimg.filename)
+            temp=os.path.splitext(os.path.basename(myimg.filename))[0]
             func.encode_enc(self,newimg, data)
             my_file = BytesIO()
             newimg.save(tkinter.filedialog.asksaveasfilename(initialfile=temp,filetypes = ([('png', '*.png')]),defaultextension=".png"))

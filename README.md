@@ -35,6 +35,7 @@ BMESSENGER
    - by tkinter the output is shown in a textbox.
 ---
 ## Guide
+
    - **for encoding**
       - select encode from home screen
       - next screen will give you option to select image or cancel operation and go back to home screen

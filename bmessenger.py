@@ -116,8 +116,8 @@ class func:
             func.encode_enc(self,newimg, data)
             my_file = BytesIO()
             temp=os.path.splitext(os.path.basename(myimg.filename))[0]
+            #tkinter.messagebox.showinfo(title="info", message="save file as png format only or else program won't work")
             newimg.save(tkinter.filedialog.asksaveasfilename(initialfile=temp,filetypes = ([('png', '*.png')]),defaultextension=".png"))
-            #newimg.save('output.png')              #test
             if not newimg:
                 messagebox.showerror("error","you have selected nothing !")
             else:
@@ -125,7 +125,7 @@ class func:
                 self.d_image_size = my_file.tell()
                 self.d_image_w,self.d_image_h = newimg.size
                 messagebox.showinfo("Success","Encoding Successful")
-                frames.home(self,ep)
+                frames.home(self,frame)
     
     #function to enter the data pixels in image
     def encode_enc(self,newimg,data):
@@ -248,6 +248,9 @@ class func:
             data += chr(int(binstr, 2))
             if pixels[-1] % 2 != 0:
                 return data
+
+
+#GUI loop
 root=Tk()
 x=frames()
 x.main(root)
